@@ -253,3 +253,4 @@ C:\Users\WELLINGTONGABRIELROC\source\repos\GestexMVC\GestexMVC\bin\Debug\net8.0\
 C:\Users\WELLINGTONGABRIELROC\source\repos\GestexMVC\GestexMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\WELLINGTONGABRIELROC\source\repos\GestexMVC\GestexMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\WELLINGTONGABRIELROC\source\repos\GestexMVC\GestexMVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\WELLINGTONGABRIELROC\source\repos\GestexMVC\GestexMVC\obj\Debug\net8.0\GestexMVC.sourcelink.json
