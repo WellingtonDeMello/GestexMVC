@@ -1,0 +1,95 @@
+﻿@model GestexMVC.Models.Cliente
+
+@{
+    ViewData["Title"] = "Novo Cliente";
+}
+
+<h2>Novo Cliente</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Tipo" class="form-label"></label>
+                <select asp-for="Tipo" class="form-select" id="selectTipo" onchange="alterarTipo()">
+                    <option value="">-- Selecione --</option>
+                    <option value="PF">Pessoa Física</option>
+                    <option value="PJ">Pessoa Jurídica</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Nome" class="form-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div id="campoPF">
+                <div class="mb-3">
+                    <label asp-for="CPF" class="form-label"></label>
+                    <input asp-for="CPF" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="RG" class="form-label"></label>
+                    <input asp-for="RG" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DataNascimento" class="form-label"></label>
+                    <input asp-for="DataNascimento" class="form-control" type="date" />
+                </div>
+            </div>
+
+            <div id="campoPJ" style="display:none;">
+                <div class="mb-3">
+                    <label asp-for="CNPJ" class="form-label"></label>
+                    <input asp-for="CNPJ" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="InscricaoEstadual" class="form-label"></label>
+                    <input asp-for="InscricaoEstadual" class="form-control" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Telefone" class="form-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Endereco" class="form-label"></label>
+                <input asp-for="Endereco" class="form-control" />
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="Ativo" class="form-check-input" />
+                <label asp-for="Ativo" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function alterarTipo() {
+            var tipo = document.getElementById("selectTipo").value;
+            document.getElementById("campoPF").style.display = tipo === "PF" ? "block" : "none";
+            document.getElementById("campoPJ").style.display = tipo === "PJ" ? "block" : "none";
+        }
+        alterarTipo();
+    </script>
+}

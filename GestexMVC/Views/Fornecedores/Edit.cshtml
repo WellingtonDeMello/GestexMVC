@@ -1,0 +1,63 @@
+﻿@model GestexMVC.Models.Fornecedor
+
+@{
+    ViewData["Title"] = "Editar Fornecedor";
+}
+
+<h2>Editar Fornecedor</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="RazaoSocial" class="form-label"></label>
+                <input asp-for="RazaoSocial" class="form-control" />
+                <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CNPJ" class="form-label"></label>
+                <input asp-for="CNPJ" class="form-control" />
+                <span asp-validation-for="CNPJ" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NomeContato" class="form-label"></label>
+                <input asp-for="NomeContato" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Telefone" class="form-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Endereco" class="form-label"></label>
+                <input asp-for="Endereco" class="form-control" />
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="Ativo" class="form-check-input" />
+                <label asp-for="Ativo" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

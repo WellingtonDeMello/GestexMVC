@@ -11,5 +11,7 @@ namespace GestexMVC.Models
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
     }
 }

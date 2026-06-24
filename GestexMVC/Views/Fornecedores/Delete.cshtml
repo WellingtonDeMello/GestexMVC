@@ -1,0 +1,38 @@
+﻿@model GestexMVC.Models.Fornecedor
+
+@{
+    ViewData["Title"] = "Excluir Fornecedor";
+}
+
+<h2>Excluir Fornecedor</h2>
+
+<p class="text-danger">Tem certeza que deseja excluir este fornecedor?</p>
+
+<div class="card" style="max-width: 400px;">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-5">Razão Social</dt>
+            <dd class="col-sm-7">@Model.RazaoSocial</dd>
+
+            <dt class="col-sm-5">CNPJ</dt>
+            <dd class="col-sm-7">@Model.CNPJ</dd>
+
+            <dt class="col-sm-5">Contato</dt>
+            <dd class="col-sm-7">@Model.NomeContato</dd>
+
+            <dt class="col-sm-5">Telefone</dt>
+            <dd class="col-sm-7">@Model.Telefone</dd>
+
+            <dt class="col-sm-5">Ativo</dt>
+            <dd class="col-sm-7">@(Model.Ativo ? "Sim" : "Não")</dd>
+        </dl>
+    </div>
+</div>
+
+<br />
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

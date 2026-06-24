@@ -1,0 +1,38 @@
+﻿@model GestexMVC.Models.Cliente
+
+@{
+    ViewData["Title"] = "Excluir Cliente";
+}
+
+<h2>Excluir Cliente</h2>
+
+<p class="text-danger">Tem certeza que deseja excluir este cliente?</p>
+
+<div class="card" style="max-width: 400px;">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-5">Nome</dt>
+            <dd class="col-sm-7">@Model.Nome</dd>
+
+            <dt class="col-sm-5">Tipo</dt>
+            <dd class="col-sm-7">@Model.Tipo</dd>
+
+            <dt class="col-sm-5">CPF / CNPJ</dt>
+            <dd class="col-sm-7">@(Model.Tipo == "PF" ? Model.CPF : Model.CNPJ)</dd>
+
+            <dt class="col-sm-5">Telefone</dt>
+            <dd class="col-sm-7">@Model.Telefone</dd>
+
+            <dt class="col-sm-5">Ativo</dt>
+            <dd class="col-sm-7">@(Model.Ativo ? "Sim" : "Não")</dd>
+        </dl>
+    </div>
+</div>
+
+<br />
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
