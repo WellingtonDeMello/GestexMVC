@@ -1,8 +1,121 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Início";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-4">
+    <h1 style="color:#E87722; font-size:42px; font-weight:700;">Bem-vindo ao Gestex</h1>
+    <p style="font-size:20px; color:#555;">Sistema de Vendas e Gestão de Estoque</p>
+</div>
+
+<!-- Dashboard -->
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card text-center p-4 h-100" style="border-left: 6px solid #E87722; border-radius:12px;">
+            <p style="font-size:16px; color:#555; margin-bottom:6px;">Vendas Hoje</p>
+            <h2 style="color:#E87722; font-size:48px; font-weight:700;">@ViewBag.TotalVendasHoje</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center p-4 h-100" style="border-left: 6px solid #1A3F6F; border-radius:12px;">
+            <p style="font-size:16px; color:#555; margin-bottom:6px;">Faturamento Hoje</p>
+            <h2 style="color:#1A3F6F; font-size:36px; font-weight:700;">@string.Format(new System.Globalization.CultureInfo("pt-BR"), "{0:C}", ViewBag.FaturamentoHoje)</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center p-4 h-100" style="border-left: 6px solid #1A3F6F; border-radius:12px;">
+            <p style="font-size:16px; color:#555; margin-bottom:6px;">Clientes Ativos</p>
+            <h2 style="color:#1A3F6F; font-size:48px; font-weight:700;">@ViewBag.TotalClientes</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Estoque Crítico -->
+@if (ViewBag.ProdutosCriticos != null && ViewBag.ProdutosCriticos.Count > 0)
+{
+    <div class="alert alert-warning mb-4" style="font-size:16px; border-radius:12px;">
+        <strong>⚠️ Atenção!</strong> Os seguintes produtos estão com estoque baixo ou zerado:
+        <ul class="mt-2 mb-0">
+            @foreach (var p in ViewBag.ProdutosCriticos)
+            {
+                <li>
+                    <strong>@p.Nome</strong> — Estoque:
+                    @if (p.QtdEstoque == 0)
+                    {
+                        <span class="badge bg-danger">Zerado</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">@p.QtdEstoque</span>
+                    }
+                    (mínimo: @p.EstoqueMinimo)
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+<!-- Atalhos -->
+<h4 style="color:#1A3F6F; margin-bottom:16px;">Acesso Rápido</h4>
+<div class="row g-4 justify-content-center">
+    <div class="col-md-3">
+        <a asp-controller="Vendas" asp-action="Create" class="text-decoration-none">
+            <div class="card text-center p-4 h-100" style="border: 2px solid #E87722; border-radius:12px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="font-size:48px;">🛒</div>
+                <h4 style="color:#E87722; margin-top:12px; font-size:20px;">Nova Venda</h4>
+                <p style="color:#555; font-size:16px;">Registrar uma nova venda</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Produtos" asp-action="Index" class="text-decoration-none">
+            <div class="card text-center p-4 h-100" style="border: 2px solid #1A3F6F; border-radius:12px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="font-size:48px;">📦</div>
+                <h4 style="color:#1A3F6F; margin-top:12px; font-size:20px;">Produtos</h4>
+                <p style="color:#555; font-size:16px;">Gerenciar estoque e produtos</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Clientes" asp-action="Index" class="text-decoration-none">
+            <div class="card text-center p-4 h-100" style="border: 2px solid #1A3F6F; border-radius:12px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="font-size:48px;">👥</div>
+                <h4 style="color:#1A3F6F; margin-top:12px; font-size:20px;">Clientes</h4>
+                <p style="color:#555; font-size:16px;">Gerenciar cadastro de clientes</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Vendas" asp-action="Index" class="text-decoration-none">
+            <div class="card text-center p-4 h-100" style="border: 2px solid #1A3F6F; border-radius:12px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="font-size:48px;">📋</div>
+                <h4 style="color:#1A3F6F; margin-top:12px; font-size:20px;">Vendas</h4>
+                <p style="color:#555; font-size:16px;">Consultar histórico de vendas</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="row g-4 justify-content-center mt-2">
+    <div class="col-md-3">
+        <a asp-controller="Funcionarios" asp-action="Index" class="text-decoration-none">
+            <div class="card text-center p-4 h-100" style="border: 2px solid #1A3F6F; border-radius:12px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="font-size:48px;">👤</div>
+                <h4 style="color:#1A3F6F; margin-top:12px; font-size:20px;">Funcionários</h4>
+                <p style="color:#555; font-size:16px;">Gerenciar funcionários</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a asp-controller="Fornecedores" asp-action="Index" class="text-decoration-none">
+            <div class="card text-center p-4 h-100" style="border: 2px solid #1A3F6F; border-radius:12px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="font-size:48px;">🏭</div>
+                <h4 style="color:#1A3F6F; margin-top:12px; font-size:20px;">Fornecedores</h4>
+                <p style="color:#555; font-size:16px;">Gerenciar fornecedores</p>
+            </div>
+        </a>
+    </div>
 </div>

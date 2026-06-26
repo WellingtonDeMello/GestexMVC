@@ -1,0 +1,172 @@
+﻿@model GestexMVC.Models.Venda
+
+@{
+    ViewData["Title"] = "Nova Venda";
+}
+
+<h2>Nova Venda</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="card mb-3">
+                <div class="card-header" style="background-color:#1A3F6F; color:#fff; font-size:17px;">
+                    Informações da Venda
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="ClienteId" class="form-label">Cliente (opcional)</label>
+                        <select asp-for="ClienteId" class="form-select">
+                            <option value="">-- Venda Balcão (sem cliente) --</option>
+                            @foreach (var c in ViewBag.Clientes)
+                            {
+                                <option value="@c.Id">@c.Nome</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="FuncionarioId" class="form-label">Funcionário</label>
+                        <select asp-for="FuncionarioId" class="form-select">
+                            <option value="">-- Selecione --</option>
+                            @foreach (var f in ViewBag.Funcionarios)
+                            {
+                                <option value="@f.Id">@f.Nome</option>
+                            }
+                        </select>
+                        <span asp-validation-for="FuncionarioId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Observacoes" class="form-label"></label>
+                        <textarea asp-for="Observacoes" class="form-control" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header" style="background-color:#1A3F6F; color:#fff; font-size:17px;">
+                    Produtos
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered" id="tabelaItens">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Estoque</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaItens">
+                        </tbody>
+                    </table>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <select id="selectProduto" class="form-select">
+                                <option value="">-- Selecione um produto --</option>
+                                @foreach (var p in ViewBag.Produtos)
+                                {
+                                    <option value="@p.Id" data-estoque="@p.QtdEstoque" data-preco="@p.PrecoVenda" data-nome="@p.Nome">
+                                        @p.Nome — R$ @p.PrecoVenda.ToString("F2")
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="inputQtd" class="form-control" value="1" min="1" placeholder="Qtd" />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-primary w-100" onclick="adicionarItem()">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body text-end">
+                    <h4>Total: <span id="totalVenda" style="color:#E87722;">R$ 0,00</span></h4>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Confirmar Venda</button>
+            <a asp-action="Index" class="btn btn-secondary btn-lg">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var itens = [];
+
+        function adicionarItem() {
+            var select = document.getElementById("selectProduto");
+            var qtd = parseInt(document.getElementById("inputQtd").value);
+            var option = select.options[select.selectedIndex];
+
+            if (!select.value) {
+                alert("Selecione um produto!");
+                return;
+            }
+
+            if (qtd <= 0 || isNaN(qtd)) {
+                alert("Quantidade inválida!");
+                return;
+            }
+
+            var estoque = parseInt(option.getAttribute("data-estoque"));
+            if (qtd > estoque) {
+                alert("Quantidade maior que o estoque disponível (" + estoque + ")!");
+                return;
+            }
+
+            var existente = itens.find(i => i.id == select.value);
+            if (existente) {
+                alert("Produto já adicionado! Remova e adicione novamente para alterar a quantidade.");
+                return;
+            }
+
+            var preco = parseFloat(option.getAttribute("data-preco"));
+            var nome = option.getAttribute("data-nome");
+
+            itens.push({ id: select.value, nome: nome, estoque: estoque, preco: preco, qtd: qtd });
+            renderizarItens();
+        }
+
+        function removerItem(index) {
+            itens.splice(index, 1);
+            renderizarItens();
+        }
+
+        function renderizarItens() {
+            var tbody = document.getElementById("listaItens");
+            tbody.innerHTML = "";
+            var total = 0;
+
+            itens.forEach(function (item, index) {
+                var subtotal = item.preco * item.qtd;
+                total += subtotal;
+
+                var tr = `<tr>
+                    <td>${item.nome}
+                        <input type="hidden" name="ProdutoIds" value="${item.id}" />
+                    </td>
+                    <td>${item.estoque}</td>
+                    <td>R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+                    <td>
+                        ${item.qtd}
+                        <input type="hidden" name="Quantidades" value="${item.qtd}" />
+                    </td>
+                    <td><button type="button" class="btn btn-sm btn-danger" onclick="removerItem(${index})">Remover</button></td>
+                </tr>`;
+                tbody.innerHTML += tr;
+            });
+
+            document.getElementById("totalVenda").innerText = "R$ " + total.toFixed(2).replace('.', ',');
+        }
+    </script>
+}

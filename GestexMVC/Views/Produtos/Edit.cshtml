@@ -24,6 +24,17 @@
             </div>
 
             <div class="mb-3">
+                <label asp-for="CategoriaId" class="form-label"></label>
+                <select asp-for="CategoriaId" class="form-select">
+                    <option value="">-- Sem categoria --</option>
+                    @foreach (var c in ViewBag.Categorias)
+                    {
+                        <option value="@c.Id">@c.Nome</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label asp-for="PrecoCusto" class="form-label"></label>
                 <input asp-for="PrecoCusto" class="form-control" />
                 <span asp-validation-for="PrecoCusto" class="text-danger"></span>

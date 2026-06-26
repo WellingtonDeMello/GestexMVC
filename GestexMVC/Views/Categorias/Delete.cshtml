@@ -1,0 +1,42 @@
+﻿@model GestexMVC.Models.Categoria
+
+@{
+    ViewData["Title"] = "Excluir Categoria";
+}
+
+<h2>Excluir Categoria</h2>
+
+<p class="text-danger">Tem certeza que deseja excluir esta categoria?</p>
+
+@if (Model.Produtos != null && Model.Produtos.Any())
+{
+    <div class="alert alert-danger">
+        Não é possível excluir esta categoria pois ela possui <strong>@Model.Produtos.Count produto(s)</strong> vinculado(s).
+    </div>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+}
+else
+{
+    <div class="card" style="max-width: 400px;">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-5">Nome</dt>
+                <dd class="col-sm-7">@Model.Nome</dd>
+
+                <dt class="col-sm-5">Descrição</dt>
+                <dd class="col-sm-7">@Model.Descricao</dd>
+
+                <dt class="col-sm-5">Ativo</dt>
+                <dd class="col-sm-7">@(Model.Ativo ? "Sim" : "Não")</dd>
+            </dl>
+        </div>
+    </div>
+
+    <br />
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+}

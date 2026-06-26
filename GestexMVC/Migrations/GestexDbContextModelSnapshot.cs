@@ -22,6 +22,31 @@ namespace GestexMVC.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("GestexMVC.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Descricao")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorias");
+                });
+
             modelBuilder.Entity("GestexMVC.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
@@ -173,6 +198,9 @@ namespace GestexMVC.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("CategoriaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Descricao")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -196,7 +224,133 @@ namespace GestexMVC.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaId");
+
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.Venda", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataVenda")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Observacoes")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Vendas");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.VendaItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("PrecoUnitario")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Subtotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("VendaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.HasIndex("VendaId");
+
+                    b.ToTable("VendaItens");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.Produto", b =>
+                {
+                    b.HasOne("GestexMVC.Models.Categoria", "Categoria")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaId");
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.Venda", b =>
+                {
+                    b.HasOne("GestexMVC.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId");
+
+                    b.HasOne("GestexMVC.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.VendaItem", b =>
+                {
+                    b.HasOne("GestexMVC.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GestexMVC.Models.Venda", "Venda")
+                        .WithMany("Itens")
+                        .HasForeignKey("VendaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produto");
+
+                    b.Navigation("Venda");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
+                });
+
+            modelBuilder.Entity("GestexMVC.Models.Venda", b =>
+                {
+                    b.Navigation("Itens");
                 });
 #pragma warning restore 612, 618
         }

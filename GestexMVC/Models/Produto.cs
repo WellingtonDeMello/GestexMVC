@@ -35,6 +35,10 @@ namespace GestexMVC.Models
         [Display(Name = "Estoque Mínimo")]
         public int EstoqueMinimo { get; set; }
 
+        [Display(Name = "Categoria")]
+        public int? CategoriaId { get; set; }
+        public Categoria? Categoria { get; set; }
+
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; } = true;
     }

@@ -1,0 +1,93 @@
+﻿@model GestexMVC.Models.Venda
+
+@{
+    ViewData["Title"] = "Detalhes da Venda";
+}
+
+<h2>Detalhes da Venda #@Model.Id</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-3">
+            <div class="card-header" style="background-color:#1A3F6F; color:#fff; font-size:17px;">
+                Informações da Venda
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Data</dt>
+                    <dd class="col-sm-8">@Model.DataVenda.ToString("dd/MM/yyyy HH:mm")</dd>
+
+                    <dt class="col-sm-4">Cliente</dt>
+                    <dd class="col-sm-8">@(Model.Cliente != null ? Model.Cliente.Nome : "Balcão")</dd>
+
+                    <dt class="col-sm-4">Funcionário</dt>
+                    <dd class="col-sm-8">@Model.Funcionario?.Nome</dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Status == "Confirmada")
+                        {
+                            <span class="badge bg-success">Confirmada</span>
+                        }
+                        else if (Model.Status == "Cancelada")
+                        {
+                            <span class="badge bg-danger">Cancelada</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Em Aberto</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">Observações</dt>
+                    <dd class="col-sm-8">@(Model.Observacoes ?? "—")</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header" style="background-color:#1A3F6F; color:#fff; font-size:17px;">
+                Produtos
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Itens)
+                        {
+                            <tr>
+                                <td>@item.Produto?.Nome</td>
+                                <td>@item.Quantidade</td>
+                                <td>@item.PrecoUnitario.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                                <td>@item.Subtotal.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body text-end">
+                <h4>Total: <span style="color:#E87722;">@Model.Total.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</span></h4>
+            </div>
+        </div>
+
+        <a asp-action="Index" class="btn btn-secondary btn-lg">Voltar</a>
+
+        @if (Model.Status == "Confirmada")
+        {
+            <form asp-action="Cancelar" asp-route-id="@Model.Id" method="post" style="display:inline"
+                  onsubmit="return confirm('Tem certeza que deseja cancelar esta venda?')">
+                <button type="submit" class="btn btn-danger btn-lg">Cancelar Venda</button>
+            </form>
+        }
+    </div>
+</div>

@@ -15,12 +15,15 @@ namespace GestexMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var produtos = await _context.Produtos.ToListAsync();
+            var produtos = await _context.Produtos
+                .Include(p => p.Categoria)
+                .ToListAsync();
             return View(produtos);
         }
 
         public IActionResult Create()
         {
+            ViewBag.Categorias = _context.Categorias.Where(c => c.Ativo).ToList();
             return View();
         }
 
@@ -41,6 +44,7 @@ namespace GestexMVC.Controllers
         {
             var produto = await _context.Produtos.FindAsync(id);
             if (produto == null) return NotFound();
+            ViewBag.Categorias = _context.Categorias.Where(c => c.Ativo).ToList();
             return View(produto);
         }
 

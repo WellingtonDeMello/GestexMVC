@@ -15,6 +15,7 @@
         <tr>
             <th>Nome</th>
             <th>Preço de Venda</th>
+            <th>Categoria</th>
             <th>Estoque</th>
             <th>Estoque Mínimo</th>
             <th>Ativo</th>
@@ -40,6 +41,8 @@
                     {
                         <span class="badge bg-success">@item.QtdEstoque</span>
                     }
+
+                <td>@(item.Categoria?.Nome ?? "—")</td>
                 </td>
                 <td>@item.EstoqueMinimo</td>
                 <td>@(item.Ativo ? "Sim" : "Não")</td>
