@@ -39,6 +39,10 @@ namespace GestexMVC.Models
         public int? CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
 
+        [StringLength(500)]
+        [Display(Name = "URL da Imagem")]
+        public string? ImagemUrl { get; set; }
+
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; } = true;
     }

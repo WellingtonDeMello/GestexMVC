@@ -81,5 +81,14 @@ namespace GestexMVC.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var produto = await _context.Produtos
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            if (produto == null) return NotFound();
+            return View(produto);
+        }
     }
 }

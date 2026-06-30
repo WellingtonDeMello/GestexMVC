@@ -1,0 +1,69 @@
+﻿@model GestexMVC.Models.Produto
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+}
+
+<h2>Detalhes do Produto</h2>
+
+<div class="card" style="max-width: 500px;">
+    <div class="card-header" style="background-color:#1A3F6F; color:#fff; font-size:17px;">
+        @Model.Nome
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-5">Imagem</dt>
+            <dd class="col-sm-7">
+                @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+                {
+                    <img src="@Model.ImagemUrl" alt="@Model.Nome" style="max-height:150px; border-radius:8px;" />
+                }
+                else
+                {
+                    <span>—</span>
+                }
+            </dd>
+
+            <dt class="col-sm-5">Nome</dt>
+            <dd class="col-sm-7">@Model.Nome</dd>
+
+            <dt class="col-sm-5">Descrição</dt>
+            <dd class="col-sm-7">@(Model.Descricao ?? "—")</dd>
+
+            <dt class="col-sm-5">Categoria</dt>
+            <dd class="col-sm-7">@(Model.Categoria?.Nome ?? "—")</dd>
+
+            <dt class="col-sm-5">Preço de Custo</dt>
+            <dd class="col-sm-7">@Model.PrecoCusto.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</dd>
+
+            <dt class="col-sm-5">Preço de Venda</dt>
+            <dd class="col-sm-7">@Model.PrecoVenda.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</dd>
+
+            <dt class="col-sm-5">Estoque Atual</dt>
+            <dd class="col-sm-7">
+                @if (Model.QtdEstoque == 0)
+                {
+                    <span class="badge bg-danger">Zerado</span>
+                }
+                else if (Model.QtdEstoque <= Model.EstoqueMinimo)
+                {
+                    <span class="badge bg-warning text-dark">@Model.QtdEstoque</span>
+                }
+                else
+                {
+                    <span class="badge bg-success">@Model.QtdEstoque</span>
+                }
+            </dd>
+
+            <dt class="col-sm-5">Estoque Mínimo</dt>
+            <dd class="col-sm-7">@Model.EstoqueMinimo</dd>
+
+            <dt class="col-sm-5">Ativo</dt>
+            <dd class="col-sm-7">@(Model.Ativo ? "Sim" : "Não")</dd>
+        </dl>
+    </div>
+</div>
+
+<br />
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>

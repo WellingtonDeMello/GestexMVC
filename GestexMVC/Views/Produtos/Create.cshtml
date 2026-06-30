@@ -12,6 +12,15 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="mb-3">
+                <label asp-for="ImagemUrl" class="form-label"></label>
+                <input asp-for="ImagemUrl" class="form-control" placeholder="Cole aqui a URL da imagem" />
+                <span asp-validation-for="ImagemUrl" class="text-danger"></span>
+                <div class="mt-2" id="previewImagem">
+                    <img id="imgPreview" src="" alt="Preview" style="display:none; max-height:150px; border-radius:8px;" />
+                </div>
+            </div>
+
+            <div class="mb-3">
                 <label asp-for="Nome" class="form-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
@@ -72,4 +81,16 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        document.getElementById("ImagemUrl").addEventListener("input", function () {
+            var url = this.value;
+            var img = document.getElementById("imgPreview");
+            if (url) {
+                img.src = url;
+                img.style.display = "block";
+            } else {
+                img.style.display = "none";
+            }
+        });
+    </script>
 }

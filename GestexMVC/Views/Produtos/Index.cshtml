@@ -13,6 +13,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th>Imagem</th>
             <th>Nome</th>
             <th>Preço de Venda</th>
             <th>Categoria</th>
@@ -25,9 +26,21 @@
     <tbody>
         @foreach (var item in Model)
         {
+        <td>
+            @if (!string.IsNullOrEmpty(item.ImagemUrl))
+            {
+                <img src="@item.ImagemUrl" alt="@item.Nome" style="height:auto; width:50px; object-fit:cover; border-radius:6px;" />
+            }
+            else
+            {
+                <span style="color:#aaa;">—</span>
+            }
+        </td>
+
             <tr>
                 <td>@item.Nome</td>
                 <td>@item.PrecoVenda.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                <td>@(item.Categoria?.Nome ?? "—")</td>
                 <td>
                     @if (item.QtdEstoque == 0)
                     {
@@ -41,12 +54,11 @@
                     {
                         <span class="badge bg-success">@item.QtdEstoque</span>
                     }
-
-                <td>@(item.Categoria?.Nome ?? "—")</td>
                 </td>
                 <td>@item.EstoqueMinimo</td>
                 <td>@(item.Ativo ? "Sim" : "Não")</td>
                 <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Detalhes</a>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
                 </td>
