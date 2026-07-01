@@ -150,5 +150,28 @@ namespace GestexMVC.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task<IActionResult> Relatorio(DateTime? dataInicio, DateTime? dataFim)
+        {
+            dataInicio ??= DateTime.Today.AddDays(-30);
+            dataFim ??= DateTime.Today;
+
+            var vendas = await _context.Vendas
+                .Include(v => v.Cliente)
+                .Include(v => v.Funcionario)
+                .Where(v => v.DataVenda.Date >= dataInicio.Value.Date
+                         && v.DataVenda.Date <= dataFim.Value.Date
+                         && v.Status == "Confirmada")
+                .OrderByDescending(v => v.DataVenda)
+                .ToListAsync();
+
+            ViewBag.DataInicio = dataInicio.Value.ToString("yyyy-MM-dd");
+            ViewBag.DataFim = dataFim.Value.ToString("yyyy-MM-dd");
+            ViewBag.TotalPeriodo = vendas.Sum(v => v.Total);
+            ViewBag.TotalVendas = vendas.Count;
+
+            return View(vendas);
+        }
     }
 }

@@ -26,18 +26,17 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <td>
-            @if (!string.IsNullOrEmpty(item.ImagemUrl))
-            {
-                <img src="@item.ImagemUrl" alt="@item.Nome" style="height:auto; width:50px; object-fit:cover; border-radius:6px;" />
-            }
-            else
-            {
-                <span style="color:#aaa;">—</span>
-            }
-        </td>
-
             <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagemUrl))
+                    {
+                        <img src="@item.ImagemUrl" alt="@item.Nome" style="height:50px; width:50px; object-fit:cover; border-radius:6px;" />
+                    }
+                    else
+                    {
+                        <span style="color:#aaa;">—</span>
+                    }
+                </td>
                 <td>@item.Nome</td>
                 <td>@item.PrecoVenda.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
                 <td>@(item.Categoria?.Nome ?? "—")</td>
