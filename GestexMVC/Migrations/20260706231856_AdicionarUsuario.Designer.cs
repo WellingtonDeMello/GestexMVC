@@ -4,6 +4,7 @@ using GestexMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestexMVC.Migrations
 {
     [DbContext(typeof(GestexDbContext))]
-    partial class GestexDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260706231856_AdicionarUsuario")]
+    partial class AdicionarUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -266,17 +269,6 @@ namespace GestexMVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Ativo = true,
-                            Login = "admin",
-                            Nome = "Administrador",
-                            Perfil = "Admin",
-                            Senha = "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk="
-                        });
                 });
 
             modelBuilder.Entity("GestexMVC.Models.Venda", b =>

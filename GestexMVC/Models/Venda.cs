@@ -24,6 +24,14 @@ namespace GestexMVC.Models
         [Display(Name = "Status")]
         public string Status { get; set; } = "EmAberto";
 
+        [Required(ErrorMessage = "A forma de pagamento é obrigatória")]
+        [Display(Name = "Forma de Pagamento")]
+        public string FormaPagamento { get; set; } = "Dinheiro";
+
+        [Column(TypeName = "decimal(18,2)")]
+        [Display(Name = "Valor Recebido")]
+        public decimal? ValorRecebido { get; set; }
+
         [StringLength(255)]
         [Display(Name = "Observações")]
         public string? Observacoes { get; set; }

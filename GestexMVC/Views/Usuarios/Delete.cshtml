@@ -1,0 +1,35 @@
+﻿@model GestexMVC.Models.Usuario
+
+@{
+    ViewData["Title"] = "Excluir Usuário";
+}
+
+<h2>Excluir Usuário</h2>
+
+<p class="text-danger">Tem certeza que deseja excluir este usuário?</p>
+
+<div class="card" style="max-width: 400px;">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4">Nome</dt>
+            <dd class="col-sm-8">@Model.Nome</dd>
+
+            <dt class="col-sm-4">Login</dt>
+            <dd class="col-sm-8">@Model.Login</dd>
+
+            <dt class="col-sm-4">Perfil</dt>
+            <dd class="col-sm-8">@Model.Perfil</dd>
+
+            <dt class="col-sm-4">Ativo</dt>
+            <dd class="col-sm-8">@(Model.Ativo ? "Sim" : "Não")</dd>
+        </dl>
+    </div>
+</div>
+
+<br />
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

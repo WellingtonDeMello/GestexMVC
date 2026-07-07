@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GestexMVC.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Usuários";
+}
+
+<h2>Usuários</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">+ Novo Usuário</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>Perfil</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Login</td>
+                <td>
+                    <span class="badge @(item.Perfil == "Admin" ? "bg-danger" : "bg-primary")">
+                        @item.Perfil
+                    </span>
+                </td>
+                <td>@(item.Ativo ? "Sim" : "Não")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -16,5 +16,32 @@ namespace GestexMVC.Models
         public DbSet<Venda> Vendas { get; set; }
         public DbSet<VendaItem> VendaItens { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Seed do usuário admin inicial
+            var senhaHash = HashSenha("admin123");
+
+            modelBuilder.Entity<Usuario>().HasData(new Usuario
+            {
+                Id = 1,
+                Nome = "Administrador",
+                Login = "admin",
+                Senha = senhaHash,
+                Perfil = "Admin",
+                Ativo = true
+            });
+        }
+
+        private string HashSenha(string senha)
+        {
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            var bytes = System.Text.Encoding.UTF8.GetBytes(senha);
+            var hash = sha.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+        }
     }
 }

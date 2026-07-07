@@ -1,9 +1,11 @@
 ﻿using GestexMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestexMVC.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private readonly GestexDbContext _context;
@@ -89,6 +91,33 @@ namespace GestexMVC.Controllers
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (produto == null) return NotFound();
             return View(produto);
+        }
+
+        public async Task<IActionResult> AjustarEstoque(int id)
+        {
+            var produto = await _context.Produtos.FindAsync(id);
+            if (produto == null) return NotFound();
+            return View(produto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AjustarEstoque(int id, int quantidade)
+        {
+            var produto = await _context.Produtos.FindAsync(id);
+            if (produto == null) return NotFound();
+
+            if (produto.QtdEstoque + quantidade < 0)
+            {
+                ModelState.AddModelError("", "Estoque não pode ficar negativo!");
+                return View(produto);
+            }
+
+            produto.QtdEstoque += quantidade;
+            _context.Update(produto);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

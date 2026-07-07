@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using GestexMVC.Models;
 using System.Globalization;
 
+
+
 var cultureInfo = new CultureInfo("en-US");
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
@@ -14,6 +16,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<GestexDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("GestexDb")));
+
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", options =>
+    {
+        options.LoginPath = "/Auth/Login";
+        options.AccessDeniedPath = "/Auth/Login";
+        options.ExpireTimeSpan = TimeSpan.FromHours(8);
+    });
 
 var app = builder.Build();
 
@@ -29,6 +39,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
