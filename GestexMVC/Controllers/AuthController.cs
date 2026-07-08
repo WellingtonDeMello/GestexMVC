@@ -23,6 +23,12 @@ namespace GestexMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string usuario, string senha)
         {
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(senha))
+            {
+                ViewBag.Erro = "Preencha o usuário e a senha!";
+                return View();
+            }
+
             var senhaHash = HashSenha(senha);
 
             var user = _context.Usuarios.FirstOrDefault(u =>
@@ -33,11 +39,11 @@ namespace GestexMVC.Controllers
             if (user != null)
             {
                 var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.Login),
-                    new Claim(ClaimTypes.GivenName, user.Nome),
-                    new Claim(ClaimTypes.Role, user.Perfil)
-                };
+        {
+            new Claim(ClaimTypes.Name, user.Login),
+            new Claim(ClaimTypes.GivenName, user.Nome),
+            new Claim(ClaimTypes.Role, user.Perfil)
+        };
 
                 var identity = new ClaimsIdentity(claims, "CookieAuth");
                 var principal = new ClaimsPrincipal(identity);

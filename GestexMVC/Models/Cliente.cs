@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+
 namespace GestexMVC.Models
 {
     public class Cliente
@@ -33,7 +34,17 @@ namespace GestexMVC.Models
         public string? InscricaoEstadual { get; set; }
 
         [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        [CustomValidation(typeof(Cliente), "ValidarDataNascimento")]
         public DateTime? DataNascimento { get; set; }
+
+        public static ValidationResult? ValidarDataNascimento(DateTime? data, ValidationContext context)
+        {
+            if (data == null) return ValidationResult.Success;
+            if (data.Value.Year < 1900 || data.Value > DateTime.Today)
+                return new ValidationResult("Data de nascimento inválida. Deve ser entre 1900 e hoje.");
+            return ValidationResult.Success;
+        }
 
         [StringLength(15)]
         [Display(Name = "Telefone")]

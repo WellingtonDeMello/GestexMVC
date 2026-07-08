@@ -1,0 +1,78 @@
+﻿@model IEnumerable<GestexMVC.Models.Produto>
+
+@{
+    ViewData["Title"] = "Relatório de Estoque";
+}
+
+<h2>Relatório de Estoque</h2>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card text-center p-3" style="border-left: 6px solid #1A3F6F; border-radius:12px;">
+            <p style="font-size:15px; color:#555; margin-bottom:4px;">Total de Produtos</p>
+            <h3 style="color:#1A3F6F; font-weight:700;">@ViewBag.TotalProdutos</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3" style="border-left: 6px solid #dc3545; border-radius:12px;">
+            <p style="font-size:15px; color:#555; margin-bottom:4px;">Estoque Zerado</p>
+            <h3 style="color:#dc3545; font-weight:700;">@ViewBag.ProdutosZerados</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3" style="border-left: 6px solid #ffc107; border-radius:12px;">
+            <p style="font-size:15px; color:#555; margin-bottom:4px;">Estoque Crítico</p>
+            <h3 style="color:#ffc107; font-weight:700;">@ViewBag.ProdutosCriticos</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3" style="border-left: 6px solid #E87722; border-radius:12px;">
+            <p style="font-size:15px; color:#555; margin-bottom:4px;">Valor em Estoque</p>
+            <h3 style="color:#E87722; font-weight:700;">@string.Format(new System.Globalization.CultureInfo("pt-BR"), "{0:C}", ViewBag.ValorTotalEstoque)</h3>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Categoria</th>
+            <th>Estoque Atual</th>
+            <th>Estoque Mínimo</th>
+            <th>Preço de Custo</th>
+            <th>Valor em Estoque</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@(item.Categoria?.Nome ?? "—")</td>
+                <td>@item.QtdEstoque</td>
+                <td>@item.EstoqueMinimo</td>
+                <td>@item.PrecoCusto.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
+                <td>@((item.PrecoCusto * item.QtdEstoque).ToString("C", new System.Globalization.CultureInfo("pt-BR")))</td>
+                <td>
+                    @if (item.QtdEstoque == 0)
+                    {
+                        <span class="badge bg-danger">Zerado</span>
+                    }
+                    else if (item.QtdEstoque <= item.EstoqueMinimo)
+                    {
+                        <span class="badge bg-warning text-dark">Crítico</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">OK</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button onclick="window.print()" class="btn btn-secondary mt-2">Imprimir</button>
+<a asp-action="Index" class="btn btn-primary mt-2">Voltar</a>

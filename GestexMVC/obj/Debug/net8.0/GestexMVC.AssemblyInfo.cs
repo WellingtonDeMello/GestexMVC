@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestexMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d863470fe4d9d592c9af8d2d197b9de65c5ab629")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60c645bd48ab402f32a383f4419167da26e72d75")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestexMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestexMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

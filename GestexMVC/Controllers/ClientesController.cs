@@ -74,6 +74,12 @@ namespace GestexMVC.Controllers
             var cliente = await _context.Clientes.FindAsync(id);
             if (cliente != null)
             {
+                bool temVendas = await _context.Vendas.AnyAsync(v => v.ClienteId == id);
+                if (temVendas)
+                {
+                    ModelState.AddModelError("", "Não é possível excluir este cliente pois ele possui vendas vinculadas.");
+                    return View(cliente);
+                }
                 _context.Clientes.Remove(cliente);
                 await _context.SaveChangesAsync();
             }

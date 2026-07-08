@@ -74,6 +74,12 @@ namespace GestexMVC.Controllers
             var funcionario = await _context.Funcionarios.FindAsync(id);
             if (funcionario != null)
             {
+                bool temVendas = await _context.Vendas.AnyAsync(v => v.FuncionarioId == id);
+                if (temVendas)
+                {
+                    ModelState.AddModelError("", "Não é possível excluir este funcionário pois ele possui vendas vinculadas.");
+                    return View(funcionario);
+                }
                 _context.Funcionarios.Remove(funcionario);
                 await _context.SaveChangesAsync();
             }

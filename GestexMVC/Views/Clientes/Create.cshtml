@@ -65,8 +65,49 @@
             </div>
 
             <div class="mb-3">
-                <label asp-for="Endereco" class="form-label"></label>
-                <input asp-for="Endereco" class="form-control" />
+                <label class="form-label">Estado</label>
+                <select id="selectEstado" class="form-select" onchange="carregarCidades()">
+                    <option value="">-- Selecione o Estado --</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Cidade</label>
+                <select id="selectCidade" class="form-select" disabled>
+                    <option value="">-- Selecione o Estado primeiro --</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Endereco" class="form-label">Endereço (Rua, Número, Bairro)</label>
+                <input asp-for="Endereco" class="form-control" placeholder="Ex: Rua das Flores, 123, Centro" />
             </div>
 
             <div class="mb-3 form-check">
@@ -84,12 +125,59 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $('#CPF').mask('000.000.000-00');
+            $('#CNPJ').mask('00.000.000/0000-00');
+            $('#Telefone').mask('(00) 00000-0000');
+        });
+
         function alterarTipo() {
             var tipo = document.getElementById("selectTipo").value;
             document.getElementById("campoPF").style.display = tipo === "PF" ? "block" : "none";
             document.getElementById("campoPJ").style.display = tipo === "PJ" ? "block" : "none";
         }
         alterarTipo();
+
+        async function carregarCidades() {
+            var estado = document.getElementById("selectEstado").value;
+            var selectCidade = document.getElementById("selectCidade");
+
+            selectCidade.innerHTML = '<option value="">Carregando...</option>';
+            selectCidade.disabled = true;
+
+            if (!estado) {
+                selectCidade.innerHTML = '<option value="">-- Selecione o Estado primeiro --</option>';
+                return;
+            }
+
+            try {
+                var response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/' + estado + '/municipios?orderBy=nome');
+                var cidades = await response.json();
+
+                selectCidade.innerHTML = '<option value="">-- Selecione a Cidade --</option>';
+                cidades.forEach(function (cidade) {
+                    var option = document.createElement("option");
+                    option.value = cidade.nome;
+                    option.text = cidade.nome;
+                    selectCidade.appendChild(option);
+                });
+                selectCidade.disabled = false;
+            } catch (e) {
+                selectCidade.innerHTML = '<option value="">Erro ao carregar cidades</option>';
+            }
+        }
+
+        document.querySelector('form').addEventListener('submit', function () {
+            var cidade = document.getElementById("selectCidade").value;
+            var estado = document.getElementById("selectEstado").value;
+            var endereco = document.getElementById("Endereco").value;
+
+            if (cidade && estado) {
+                document.getElementById("Endereco").value = endereco + ' - ' + cidade + '/' + estado;
+            }
+        });
     </script>
+
 }

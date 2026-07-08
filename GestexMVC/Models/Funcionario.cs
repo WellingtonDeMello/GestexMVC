@@ -35,6 +35,10 @@ namespace GestexMVC.Models
         [Display(Name = "Data de Admissão")]
         public DateTime DataAdmissao { get; set; } = DateTime.Today;
 
+        [StringLength(200)]
+        [Display(Name = "Endereço")]
+        public string? Endereco { get; set; }
+
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; } = true;
     }

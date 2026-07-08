@@ -78,12 +78,17 @@ namespace GestexMVC.Controllers
             var produto = await _context.Produtos.FindAsync(id);
             if (produto != null)
             {
+                bool temVendas = await _context.VendaItens.AnyAsync(v => v.ProdutoId == id);
+                if (temVendas)
+                {
+                    ModelState.AddModelError("", "Não é possível excluir este produto pois ele possui vendas vinculadas.");
+                    return View(produto);
+                }
                 _context.Produtos.Remove(produto);
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
         }
-
         public async Task<IActionResult> Details(int id)
         {
             var produto = await _context.Produtos
@@ -118,6 +123,21 @@ namespace GestexMVC.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> RelatorioEstoque()
+        {
+            var produtos = await _context.Produtos
+                .Include(p => p.Categoria)
+                .OrderBy(p => p.Nome)
+                .ToListAsync();
+
+            ViewBag.TotalProdutos = produtos.Count;
+            ViewBag.ProdutosZerados = produtos.Count(p => p.QtdEstoque == 0);
+            ViewBag.ProdutosCriticos = produtos.Count(p => p.QtdEstoque > 0 && p.QtdEstoque <= p.EstoqueMinimo);
+            ViewBag.ValorTotalEstoque = produtos.Sum(p => p.PrecoCusto * p.QtdEstoque);
+
+            return View(produtos);
         }
     }
 }
