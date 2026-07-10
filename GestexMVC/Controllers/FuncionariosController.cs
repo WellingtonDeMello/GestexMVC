@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GestexMVC.Controllers
 {
-    [Authorize]
+    [Authorize] // Exige login para acessar qualquer ação deste controller
     public class FuncionariosController : Controller
     {
         private readonly GestexDbContext _context;
@@ -15,17 +15,20 @@ namespace GestexMVC.Controllers
             _context = context;
         }
 
+        // Lista todos os funcionários
         public async Task<IActionResult> Index()
         {
             var funcionarios = await _context.Funcionarios.ToListAsync();
             return View(funcionarios);
         }
 
+        // Exibe o formulário de novo funcionário
         public IActionResult Create()
         {
             return View();
         }
 
+        // Salva o novo funcionário no banco
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Funcionario funcionario)
@@ -39,6 +42,7 @@ namespace GestexMVC.Controllers
             return View(funcionario);
         }
 
+        // Exibe o formulário de edição
         public async Task<IActionResult> Edit(int id)
         {
             var funcionario = await _context.Funcionarios.FindAsync(id);
@@ -46,6 +50,7 @@ namespace GestexMVC.Controllers
             return View(funcionario);
         }
 
+        // Salva as alterações do funcionário
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Funcionario funcionario)
@@ -60,6 +65,7 @@ namespace GestexMVC.Controllers
             return View(funcionario);
         }
 
+        // Exibe a tela de confirmação de exclusão
         public async Task<IActionResult> Delete(int id)
         {
             var funcionario = await _context.Funcionarios.FindAsync(id);
@@ -67,6 +73,7 @@ namespace GestexMVC.Controllers
             return View(funcionario);
         }
 
+        // Executa a exclusão do funcionário
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -74,6 +81,7 @@ namespace GestexMVC.Controllers
             var funcionario = await _context.Funcionarios.FindAsync(id);
             if (funcionario != null)
             {
+                // Bloqueia exclusão se o funcionário tiver vendas vinculadas
                 bool temVendas = await _context.Vendas.AnyAsync(v => v.FuncionarioId == id);
                 if (temVendas)
                 {

@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Login";
-    Layout = null;
+    Layout = null; // Não usa o layout padrão — a tela de login tem visual próprio
 }
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@
     <title>Login - Gestex</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
+        /* Centraliza o card de login na tela com fundo azul */
         body {
             background-color: #1A3F6F;
             display: flex;
@@ -19,6 +20,7 @@
             min-height: 100vh;
         }
 
+        /* Card branco centralizado com sombra */
         .login-card {
             background: #fff;
             border-radius: 16px;
@@ -28,6 +30,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
 
+        /* Logo e título do sistema */
         .login-logo {
             text-align: center;
             margin-bottom: 30px;
@@ -67,6 +70,7 @@
             border-radius: 8px;
         }
 
+        /* Botão de login na cor laranja do Gestex */
         .btn-login {
             background-color: #E87722;
             border: none;
@@ -92,6 +96,7 @@
             <p>Sistema de Vendas e Gestão de Estoque</p>
         </div>
 
+        @* Exibe a mensagem de erro caso login falhe *@
         @if (ViewBag.Erro != null)
         {
             <div class="alert alert-danger" style="font-size:16px;">
@@ -99,6 +104,7 @@
             </div>
         }
 
+        @* Formulário enviado via POST para o AuthController *@
         <form asp-action="Login" method="post">
             <div class="mb-3">
                 <label class="form-label">Usuário</label>

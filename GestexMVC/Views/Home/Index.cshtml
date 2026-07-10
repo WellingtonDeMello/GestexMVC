@@ -7,29 +7,32 @@
     <p style="font-size:20px; color:#555;">Sistema de Vendas e Gestão de Estoque</p>
 </div>
 
-<!-- Dashboard -->
+@* ===== DASHBOARD — Cards com dados do dia vindos do HomeController ===== *@
 <div class="row g-4 mb-4">
     <div class="col-md-4">
         <div class="card text-center p-4 h-100" style="border-left: 6px solid #E87722; border-radius:12px;">
             <p style="font-size:16px; color:#555; margin-bottom:6px;">Vendas Hoje</p>
+            @* Total de vendas confirmadas no dia *@
             <h2 style="color:#E87722; font-size:48px; font-weight:700;">@ViewBag.TotalVendasHoje</h2>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card text-center p-4 h-100" style="border-left: 6px solid #1A3F6F; border-radius:12px;">
             <p style="font-size:16px; color:#555; margin-bottom:6px;">Faturamento Hoje</p>
+            @* Formata o valor em Real Brasileiro *@
             <h2 style="color:#1A3F6F; font-size:36px; font-weight:700;">@string.Format(new System.Globalization.CultureInfo("pt-BR"), "{0:C}", ViewBag.FaturamentoHoje)</h2>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card text-center p-4 h-100" style="border-left: 6px solid #1A3F6F; border-radius:12px;">
             <p style="font-size:16px; color:#555; margin-bottom:6px;">Clientes Ativos</p>
+            @* Total de clientes ativos cadastrados *@
             <h2 style="color:#1A3F6F; font-size:48px; font-weight:700;">@ViewBag.TotalClientes</h2>
         </div>
     </div>
 </div>
 
-<!-- Estoque Crítico -->
+@* ===== ALERTA DE ESTOQUE CRÍTICO — Só aparece se houver produtos com estoque baixo ===== *@
 @if (ViewBag.ProdutosCriticos != null && ViewBag.ProdutosCriticos.Count > 0)
 {
     <div class="alert alert-warning mb-4" style="font-size:16px; border-radius:12px;">
@@ -39,6 +42,7 @@
             {
                 <li>
                     <strong>@p.Nome</strong> — Estoque:
+                    @* Badge vermelho para zerado, amarelo para estoque baixo *@
                     @if (p.QtdEstoque == 0)
                     {
                         <span class="badge bg-danger">Zerado</span>
@@ -54,7 +58,7 @@
     </div>
 }
 
-<!-- Atalhos -->
+@* ===== ATALHOS RÁPIDOS — Cards de navegação para as telas principais ===== *@
 <h4 style="color:#1A3F6F; margin-bottom:16px;">Acesso Rápido</h4>
 <div class="row g-4 justify-content-center">
     <div class="col-md-3">

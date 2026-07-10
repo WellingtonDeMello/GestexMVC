@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace GestexMVC.Controllers
 {
-    [Authorize]
+    [Authorize] // Exige login para acessar qualquer ação deste controller
     public class CategoriasController : Controller
     {
         private readonly GestexDbContext _context;
@@ -16,17 +15,20 @@ namespace GestexMVC.Controllers
             _context = context;
         }
 
+        // Lista todas as categorias
         public async Task<IActionResult> Index()
         {
             var categorias = await _context.Categorias.ToListAsync();
             return View(categorias);
         }
 
+        // Exibe o formulário de nova categoria
         public IActionResult Create()
         {
             return View();
         }
 
+        // Salva a nova categoria no banco
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Categoria categoria)
@@ -40,6 +42,7 @@ namespace GestexMVC.Controllers
             return View(categoria);
         }
 
+        // Exibe o formulário de edição
         public async Task<IActionResult> Edit(int id)
         {
             var categoria = await _context.Categorias.FindAsync(id);
@@ -47,6 +50,7 @@ namespace GestexMVC.Controllers
             return View(categoria);
         }
 
+        // Salva as alterações da categoria
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Categoria categoria)
@@ -61,6 +65,8 @@ namespace GestexMVC.Controllers
             return View(categoria);
         }
 
+        // Exibe a tela de confirmação de exclusão
+        // Carrega os produtos vinculados para verificar se pode excluir
         public async Task<IActionResult> Delete(int id)
         {
             var categoria = await _context.Categorias
@@ -70,6 +76,7 @@ namespace GestexMVC.Controllers
             return View(categoria);
         }
 
+        // Executa a exclusão da categoria
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -80,6 +87,7 @@ namespace GestexMVC.Controllers
 
             if (categoria != null)
             {
+                // Bloqueia exclusão se houver produtos vinculados
                 if (categoria.Produtos != null && categoria.Produtos.Any())
                 {
                     ModelState.AddModelError("", "Não é possível excluir uma categoria com produtos vinculados.");

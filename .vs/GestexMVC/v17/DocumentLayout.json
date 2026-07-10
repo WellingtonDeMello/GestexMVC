@@ -1,0 +1,248 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\catehoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\catehoriacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\views\\categorias\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\views\\categorias\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\wwwroot\\images\\qr-code-pix.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\wwwroot\\images\\qr-code-pix.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\vendascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\vendascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\produtoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\funcionarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\funcionarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\fornecedorescontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\fornecedorescontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|c:\\users\\wellingtongabrielroc\\source\\repos\\gestexmvc\\gestexmvc\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBA3F93C-E20F-484C-ABEC-74A7AB497A49}|GestexMVC\\GestexMVC.csproj|solutionrelative:gestexmvc\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "GestexMVC\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\wwwroot\\css\\site.css*",
+              "RelativeToolTip": "GestexMVC\\wwwroot\\css\\site.css*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-10T00:10:52.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Views\\Categorias\\Create.cshtml",
+              "RelativeDocumentMoniker": "GestexMVC\\Views\\Categorias\\Create.cshtml",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Views\\Categorias\\Create.cshtml",
+              "RelativeToolTip": "GestexMVC\\Views\\Categorias\\Create.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBgAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-09T23:02:05.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "GestexMVC\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "GestexMVC\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-09T22:57:03.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VendasController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\VendasController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\VendasController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\VendasController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\VendasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:55:49.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAmwHEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:54:17.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProdutosController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\ProdutosController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\ProdutosController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\ProdutosController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\ProdutosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:52:01.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAmwDwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:51:30.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FuncionariosController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\FuncionariosController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\FuncionariosController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\FuncionariosController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\FuncionariosController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAuwGAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:50:58.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwFEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:40:01.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CatehoriaController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\CatehoriaController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\CatehoriaController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\CatehoriaController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\CatehoriaController.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwE8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:42:11.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "GestexMVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "GestexMVC\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-09T23:16:30.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "qr-code-pix.jpg - Bitmap [618x623, 24 bits, JPG]",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\wwwroot\\Images\\qr-code-pix.jpg",
+              "RelativeDocumentMoniker": "GestexMVC\\wwwroot\\Images\\qr-code-pix.jpg",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\wwwroot\\Images\\qr-code-pix.jpg - Bitmap [618x623, 24 bits, JPG]",
+              "RelativeToolTip": "GestexMVC\\wwwroot\\Images\\qr-code-pix.jpg - Bitmap [618x623, 24 bits, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2026-07-09T23:04:16.163Z",
+              "EditorCaption": " - Bitmap [618x623, 24 bits, JPG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FornecedoresControllers.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\FornecedoresControllers.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\FornecedoresControllers.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\FornecedoresControllers.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\FornecedoresControllers.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwFkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:50:23.236Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ClientesController.cs",
+              "DocumentMoniker": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\ClientesController.cs",
+              "RelativeDocumentMoniker": "GestexMVC\\Controllers\\ClientesController.cs",
+              "ToolTip": "C:\\Users\\WELLINGTONGABRIELROC\\source\\repos\\GestexMVC\\GestexMVC\\Controllers\\ClientesController.cs",
+              "RelativeToolTip": "GestexMVC\\Controllers\\ClientesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T22:44:14.473Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
